@@ -1,0 +1,31 @@
+apply plugin: 'checkstyle'
+apply plugin: 'pmd'
+apply plugin: 'findbugs'
+apply plugin: 'cobertura'
+
+checkstyle {
+    ignoreFailures = true
+    configFile = rootProject.file('codequality/checkstyle.xml')
+}
+
+pmd {
+    ignoreFailures = true
+}
+
+findbugs {
+    ignoreFailures = false
+}
+
+tasks.withType(org.gradle.api.plugins.quality.FindBugs) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+cobertura {
+    sourceDirs = sourceSets.main.java.srcDirs
+    format = 'html'
+    includes = ['**/*.java', '**/*.groovy']
+    excludes = []
+}

@@ -1,0 +1,7 @@
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    classpath 'com.mapvine:gradle-cobertura-plugin:0.1'
+}

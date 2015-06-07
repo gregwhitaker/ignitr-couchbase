@@ -1,0 +1,14 @@
+apply plugin: 'maven'
+
+task versionInfo {
+    def buildNumber = System.getenv("BUILD_NUMBER") ?: 0
+
+    // Default to building SNAPSHOT versions unless the build was executed with the -PbuildRelease command line parameter
+    if(project.hasProperty('buildRelease')) {
+        project.ext.set("releaseVersion", "${project.version}." + buildNumber);
+    } else {
+        project.ext.set("releaseVersion", "${project.version}-SNAPSHOT");
+    }
+}
+
+build.dependsOn versionInfo
