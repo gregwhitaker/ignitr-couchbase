@@ -1,7 +1,14 @@
 apply plugin: 'maven'
 
 task versionInfo {
-    def buildNumber = System.getenv("BUILD_NUMBER") ?: 0
+    def buildNumber = 0;
+    if(System.getenv("BUILD_NUMBER") != null) {
+        // Handle Jenkins Builds
+        buildNumber = System.getenv("BUILD_NUMBER")
+    } else if(System.getenv("SNAP_PIPELINE_COUNTER") != null) {
+        // Handle Snap-CI Builds
+        buildNumber = System.getenv("SNAP_PIPELINE_COUNTER")
+    }
 
     // Default to building SNAPSHOT versions unless the build was executed with the -PbuildRelease command line parameter
     if(project.hasProperty('buildRelease')) {
