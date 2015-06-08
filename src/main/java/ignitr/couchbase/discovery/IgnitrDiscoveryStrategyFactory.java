@@ -17,17 +17,20 @@ public class IgnitrDiscoveryStrategyFactory {
      */
     public static IgnitrDiscoveryStrategy getInstance() {
         String strategy = DynamicPropertyFactory.getInstance().getStringProperty(
-                IgnitrCouchbaseConfig.DISCOVERY_STRATEGY_PROPERTY, EurekaDiscoveryStrategy.NAME).get();
+                IgnitrCouchbaseConfig.DISCOVERY_STRATEGY_PROP, EurekaDiscoveryStrategy.NAME).get();
 
-        if (strategy.equalsIgnoreCase(EurekaDiscoveryStrategy.NAME)) {
-            LOGGER.debug("Creating EurekaDiscoveryStrategy");
-            return new EurekaDiscoveryStrategy();
-        } else if (strategy.equalsIgnoreCase(PropertyDiscoveryStrategy.NAME)) {
-            LOGGER.debug("Creating PropertyDiscoveryStrategy");
-            return new PropertyDiscoveryStrategy();
-        } else {
-            // Invalid discovery strategy was specified
-            throw new RuntimeException();
+        switch (strategy.toLowerCase()) {
+            case EurekaDiscoveryStrategy.NAME:
+                LOGGER.debug("Creating EurekaDiscoveryStrategy");
+                return new EurekaDiscoveryStrategy();
+            case PropertyDiscoveryStrategy.NAME:
+                LOGGER.debug("Creating EurekaDiscoveryStrategy");
+                return new PropertyDiscoveryStrategy();
+            case LocalhostDiscoveryStrategy.NAME:
+                LOGGER.debug("Creating LocalhostDiscoveryStrategy");
+                return new LocalhostDiscoveryStrategy();
+            default:
+                throw new RuntimeException("Invalid discovery strategy");
         }
     }
 }
