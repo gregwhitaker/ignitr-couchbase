@@ -16,12 +16,24 @@
 
 package ignitr.couchbase.exception;
 
+/**
+ *
+ */
 public class IgnitrCouchbaseException extends RuntimeException {
 
+    /**
+     *
+     * @param message
+     */
     public IgnitrCouchbaseException(String message) {
         super(message);
     }
 
+    /**
+     *
+     * @param message
+     * @param throwable
+     */
     public IgnitrCouchbaseException(String message, Throwable throwable) {
         super(message, throwable);
     }

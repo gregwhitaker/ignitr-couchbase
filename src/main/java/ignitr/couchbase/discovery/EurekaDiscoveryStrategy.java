@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 /**
- *
+ * Discovery strategy that uses <a href="https://github.com/Netflix/eureka">Netflix's Eureka</a> to discover Couchbase cluster nodes.
  */
 public class EurekaDiscoveryStrategy implements IgnitrDiscoveryStrategy {
     public static final String NAME = "eureka";

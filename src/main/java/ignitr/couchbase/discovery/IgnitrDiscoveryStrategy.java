@@ -19,13 +19,12 @@ package ignitr.couchbase.discovery;
 import java.util.List;
 
 /**
- *
+ * Interface that all node discovery strategies must implement.
  */
 public interface IgnitrDiscoveryStrategy {
 
     /**
-     *
-     * @return
+     * @return list of discovered Couchbase cluster nodes
      */
     List<String> discoverClusterNodes();
 }
