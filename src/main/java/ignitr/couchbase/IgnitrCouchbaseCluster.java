@@ -16,5 +16,7 @@
 
 package ignitr.couchbase;
 
+import com.couchbase.client.java.CouchbaseBucket;
+
 public class IgnitrCouchbaseCluster {
 }
