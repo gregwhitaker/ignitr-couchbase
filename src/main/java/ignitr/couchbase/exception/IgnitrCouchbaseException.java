@@ -14,7 +14,15 @@
  * limitations under the License.
  */
 
-package ignitr.couchbase;
+package ignitr.couchbase.exception;
 
-public class IgnitrCouchbaseCluster {
+public class IgnitrCouchbaseException extends RuntimeException {
+
+    public IgnitrCouchbaseException(String message) {
+        super(message);
+    }
+
+    public IgnitrCouchbaseException(String message, Throwable throwable) {
+        super(message, throwable);
+    }
 }

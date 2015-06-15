@@ -14,7 +14,16 @@
  * limitations under the License.
  */
 
-package ignitr.couchbase;
+package ignitr.couchbase.config;
 
-public class IgnitrCouchbaseCluster {
+/**
+ *
+ */
+public class IgnitrConfigProperties {
+
+    /**
+     *
+     */
+    public static final String PROP_DISCOVERY_STRATEGY = "ignitr.couchbase.discovery.strategy";
+
 }
